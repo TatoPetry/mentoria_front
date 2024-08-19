@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+            const url = "https://pokeapi.co/api/v2/pokemon/pikachu"; // URL da API para obter informações sobre o Pikachu
+
+            // Fazendo a requisição usando fetch
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) { // Verifica se a resposta foi bem-sucedida
+                        throw new Error("Falha na requisição");
+                    }
+                    return response.json(); // Converte a resposta para JSON
+                })
+                .then(data => {
+                    console.log("Nome:", data.name); // Nome do Pokémon
+                    console.log("Altura:", data.height); // Altura do Pokémon
+                    console.log("Habilidades:", data.abilities.map(ability => ability.ability.name).join(", ")); // Habilidades do Pokémon
+                })
+                .catch(error => {
+                    console.error("Erro:", error); // Lida com qualquer erro na requisição
+                });
+    </script>
+</body>
+</html>
